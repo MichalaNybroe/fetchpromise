@@ -25,7 +25,7 @@ async function showAllKommuner() {
 
 function showKommuneMap() {
   for (const KommmuneKey of kommuneMap.keys()) {
-    out(kommuneMap.get(KommmuneKey));
+    //out(kommuneMap.get(KommmuneKey));
   }
 }
 
