@@ -2,11 +2,11 @@ console.log("Vi er i post kommuner js fil.");
 
 const countiesURL = 'http://localhost:8080/county';
 
-let region = {};
+let body = {};
 
-body = {
+let county = {
   "countyCode": "0265",
-  "name": "Roskilde yyy",
+  "name": "Roskilde",
   "href": "http://localhost:8080/county/0265"
 }
 
@@ -20,16 +20,24 @@ const postKommuneRequest = {
 
 const pbPostKommuner = document.getElementById('pbPostKommuner');
 
-pbPostKommuner.addEventListener('click', postAllKommuner);
-
 function postAllKommuner(button) {
   console.log("post all");
 
   //stringify = omdanner javascript objekt til string som laves om til java.
-  region = JSON.stringify(body);
-  out(region);
-  postKommuneRequest.body = region;
+  for (const komKey of kommuneMap.keys()) {
+    let kom1 = kommuneMap.get(komKey);
 
-  fetch(countiesURL, postKommuneRequest).catch(error => out(error));
+    county.countyCode = kom1.kode;
+    county.name = kom1.navn;
+    county.href = kom1.href;
+
+    body = JSON.stringify(county);
+
+    out(body);
+
+    postKommuneRequest.body = body;
+    fetch(countiesURL, postKommuneRequest).catch(error => out(error));
+  }
 }
 
+pbPostKommuner.addEventListener('click', postAllKommuner);
