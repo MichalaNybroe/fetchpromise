@@ -7,7 +7,8 @@ let body = {};
 let county = {
   "countyCode": "0265",
   "name": "Roskilde",
-  "href": "http://localhost:8080/county/0265"
+  "href": "http://localhost:8080/county/0265",
+  "region" : {"regionCode" : "1085" }
 }
 
 const postKommuneRequest = {
@@ -15,7 +16,7 @@ const postKommuneRequest = {
   headers: {
     "content-type": "application/json"
   },
-  body:body
+  body: body
 }
 
 const pbPostKommuner = document.getElementById('pbPostKommuner');
@@ -30,7 +31,7 @@ function postAllKommuner(button) {
     county.countyCode = kom1.kode;
     county.name = kom1.navn;
     county.href = kom1.href;
-
+    county.region.regionCode = kom1.region.kode;
     body = JSON.stringify(county);
 
     out(body);
