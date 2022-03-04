@@ -25,7 +25,7 @@ let getRegionerAPIRequest = {
 const pbPostRegioner = document.getElementById('pbPostRegioner');
 
 let getRegionerAPIURL = "https://api.dataforsyningen.dk/regioner";
-const postRegionURL = "http:/localhost:8080/region";
+const postRegionURL = "http://localhost:8080/region";
 
 function postAllRegioner(button) {
   fetch(getRegionerAPIURL, getRegionerAPIRequest)
@@ -43,3 +43,4 @@ function postAllRegioner(button) {
 }
 
 pbPostRegioner.addEventListener('click', postAllRegioner);
+console.log(pbPostRegioner);
